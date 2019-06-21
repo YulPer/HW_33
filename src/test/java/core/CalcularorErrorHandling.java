@@ -126,6 +126,13 @@ public class CalcularorErrorHandling {
 		System.out.println("Test # 20: Divide 6 params");
 		assertEquals("Not correct. 400 / 4 / 2 / 5 / 2 / 1 = 5", Calculator.divide(400.0, 4.0, 2.0, 5.0, 2.0, 1.0), 4.0, 0.09);
 	}
-	@Test(expected=Exception.class) // expected result = MojoFailureException
-	public void test () {fail ("Not correct");}
+	@Test
+	public void testMojoFailureException () {
+		try{}
+		fail ("Not corect");
+		catch (MojoFailureException e) {
+			assertThat(e.getMessage(), containsString ("Not correct"));
+		}
+				}
+	
 }
